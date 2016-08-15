@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .bubble{
+            width:25px ;
+            height: 25px;
+            border-radius: 50%;
+            position: absolute;
+            /*background-color: yellowgreen;*/
+        }
+    </style>
+</head>
+<body>
+
+</body>
+<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+<script type="text/javascript">
+    var $clientW = $(window).width();
+    var $clientH = $(window).height();
+    console.log($clientH,$clientW);
+    //泡泡产生
+    function bubbleAppear(){
+        var pTop = Math.round(Math.random()*$clientH);
+        var pLeft = Math.round(Math.random()*$clientW);
+        var w = Math.round(Math.random()*200 + 50);
+        console.log(pLeft,pTop);
+        var cor = "#"+newColor();
+        $("<div ></div>").css({
+            position: "absolute",
+            width:w,
+            height:w,
+            "border-radius":"50%",
+            "background-color":cor,
+            left:pLeft,
+            top:pTop
+        }).appendTo("body").slideDown(1000).stop().hide(5000);
+    }
+    //随机颜色
+    function newColor(){
+        var ary = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"];
+        var str = "";
+        for(var i = 0; i < 6; i ++){
+            var n = Math.round(Math.random()*15) ;
+            str += ary[n];
+        }
+        return str;
+    }
+    var timer = window.setInterval(show,500);
+    function show(){
+        var n = Math.round(Math.random()*10);
+        for(var i = 0; i < n; i ++){
+            bubbleAppear();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
